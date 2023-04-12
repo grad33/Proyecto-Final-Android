@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">room</string>
+    <string name="add_nota">add nota</string>
+    <string name="edit_nota">edit nota</string>
+    <string name="delete_nota">delete nota</string>
+    <string name="add_tag">add tag</string>
+    <string name="edit_tag">edit tag</string>
+    <string name="delete_tag">delete tag</string>
+    <string name="name">Name</string>
+    <string name="first_surname">First Surname</string>
+    <string name="second_surname">Second Surname</string>
+    <string name="save">Save</string>
+</resources>
