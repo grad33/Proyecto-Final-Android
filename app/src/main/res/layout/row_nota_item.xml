@@ -3,70 +3,78 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
-
-    <TextView
-        android:id="@+id/name"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/first_surname"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintHorizontal_chainStyle="packed"
-        app:layout_constraintHorizontal_weight="25"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="José" />
-
-    <TextView
-        android:id="@+id/first_surname"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="@+id/name"
-        app:layout_constraintEnd_toStartOf="@+id/second_surname"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintHorizontal_weight="25"
-        app:layout_constraintStart_toEndOf="@+id/name"
-        app:layout_constraintTop_toTopOf="@+id/name"
-        tools:text="Rucho" />
-
-    <TextView
-        android:id="@+id/second_surname"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="@+id/first_surname"
-        app:layout_constraintEnd_toStartOf="@+id/button_details"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintHorizontal_weight="25"
-        app:layout_constraintStart_toEndOf="@+id/first_surname"
-        app:layout_constraintTop_toTopOf="@+id/first_surname"
-        app:layout_constraintVertical_bias="0.0"
-        tools:text="Cortado" />
+    android:layout_height="wrap_content"
+    >
 
     <ImageButton
         android:id="@+id/button_details"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_width="60dp"
+        android:layout_height="38dp"
+        android:backgroundTint="@color/secondary_color"
         android:contentDescription="@string/edit_nota"
+        android:minHeight="48dp"
         android:src="@drawable/ic_baseline_edit_24"
-        app:layout_constraintBottom_toBottomOf="@+id/second_surname"
+        app:layout_constraintBottom_toBottomOf="@+id/content_main"
         app:layout_constraintEnd_toStartOf="@+id/button_delete"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintHorizontal_weight="12.5"
-        app:layout_constraintStart_toEndOf="@+id/second_surname"
-        app:layout_constraintTop_toTopOf="@+id/second_surname" />
+        app:layout_constraintStart_toEndOf="@+id/content_main"
+        app:layout_constraintTop_toTopOf="@+id/content_main"
+        tools:ignore="VisualLintBounds" />
 
-    <ImageButton
-        android:id="@+id/button_delete"
+    <TextView
+        android:id="@+id/content_main"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="8dp"
+        android:maxLines="1"
+        android:maxLength="20"
+        android:background="@drawable/campo_bonito"
+        android:paddingStart="9dp"
+        android:paddingEnd="9dp"
+        app:layout_constraintBottom_toBottomOf="@+id/title_main"
+        app:layout_constraintEnd_toStartOf="@+id/button_details"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_weight="25"
+        app:layout_constraintStart_toEndOf="@+id/title_main"
+        app:layout_constraintTop_toTopOf="@+id/title_main"
+        app:layout_constraintVertical_bias="0.0"
+        tools:text="Cuerpo de la nota" />
+
+    <TextView
+        android:id="@+id/title_main"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="8dp"
+        android:maxLines="1"
+        android:maxLength="20"
+        android:background="@drawable/campo_bonito"
+        android:paddingStart="9dp"
+        android:paddingEnd="9dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/content_main"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_weight="25"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints"
+        tools:text="Titulo"/>
+    <ImageButton
+        android:id="@+id/button_delete"
+        android:layout_width="60dp"
+        android:layout_height="38dp"
+        android:backgroundTint="@color/secondary_color"
         android:contentDescription="@string/delete_nota"
+        android:minHeight="48dp"
         android:src="@drawable/ic_baseline_delete_24"
         app:layout_constraintBottom_toBottomOf="@+id/button_details"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintHorizontal_weight="12.5"
         app:layout_constraintStart_toEndOf="@+id/button_details"
-        app:layout_constraintTop_toTopOf="@+id/button_details" />
+        app:layout_constraintTop_toTopOf="@+id/button_details"
+        app:layout_constraintVertical_bias="0.0"
+        tools:ignore="VisualLintBounds" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

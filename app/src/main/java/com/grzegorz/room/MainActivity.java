@@ -6,18 +6,13 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.PopupMenu;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.grzegorz.room.db.AppDatabase;
 import com.grzegorz.room.db.Nota;
-import com.grzegorz.room.db.Tag;
-
 import java.util.List;
 import java.util.Objects;
-
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
 import io.reactivex.rxjava3.annotations.NonNull;
 import io.reactivex.rxjava3.functions.Action;
@@ -73,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
 
                         // Set up the action bar
                         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(false);
-                        getSupportActionBar().setTitle("My Notes");
+                        getSupportActionBar().setTitle("Mis Notas");
 
                     }
                 });

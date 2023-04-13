@@ -4,86 +4,88 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/main_color"
     tools:context="com.grzegorz.room.EditNotaActivity">
 
-    <TextView
-        android:id="@+id/edit_nota_title"
-        android:layout_width="wrap_content"
+
+    <HorizontalScrollView
+        android:id="@+id/horizontalScrollView"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/edit_nota"
-        android:textAllCaps="true"
-        android:textAppearance="@style/TextAppearance.Material3.HeadlineLarge"
-        app:layout_constraintBottom_toTopOf="@id/edit_nota_name"
+        android:layout_marginStart="8dp"
+        android:scrollbars="none"
+        app:layout_constraintBottom_toTopOf="@+id/edit_nota_title"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_chainStyle="spread" />
+        app:layout_constraintTop_toBottomOf="@+id/edit_nota_name">
+
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/tag_chip_group"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/secondary_color"
+            android:checkable="true"
+            app:chipSpacing="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:singleSelection="false"
+            tools:layout_editor_absoluteY="48dp" />
+    </HorizontalScrollView>
 
     <EditText
         android:id="@+id/edit_nota_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@drawable/campo_bonito"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
         android:ems="10"
-        android:hint="@string/name"
+        android:hint="@string/title"
+        android:importantForAutofill="no"
         android:inputType="textPersonName"
         android:minHeight="48dp"
-        app:layout_constraintBottom_toTopOf="@+id/edit_nota_first_surname"
+        app:layout_constraintBottom_toTopOf="@+id/horizontalScrollView"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edit_nota_title"
-        tools:text="Juan"
-        android:importantForAutofill="no" />
-
-    <com.google.android.material.chip.ChipGroup
-        android:id="@+id/tag_chip_group"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:checkable="true"
-        app:chipSpacing="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/edit_nota_name"
-        app:layout_constraintTop_toBottomOf="@+id/edit_nota_title"
-        app:singleSelection="false"
-        tools:layout_editor_absoluteX="0dp" />
+        app:layout_constraintTop_toTopOf="parent"
+        />
 
     <EditText
-        android:id="@+id/edit_nota_first_surname"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:autofillHints=""
+        android:id="@+id/edit_nota_title"
+        android:layout_width="299dp"
+        android:layout_height="314dp"
+        android:background="@drawable/campo_bonito"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:autofillHints="Contenido de la nota"
         android:ems="10"
-        android:hint="@string/first_surname"
-        android:inputType="textPersonName"
+        android:hint="@string/cuerpo"
+        android:inputType="textMultiLine"
         android:minHeight="48dp"
-        app:layout_constraintBottom_toTopOf="@+id/edit_nota_second_surname"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edit_nota_name"
-        tools:text="Agüí" />
-
-    <EditText
-        android:id="@+id/edit_nota_second_surname"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:autofillHints=""
-        android:ems="10"
-        android:hint="@string/second_surname"
-        android:inputType="textPersonName"
-        android:minHeight="48dp"
+        android:minLines="2"
+        android:gravity="top|start"
+        android:scrollbarStyle="insideOverlay"
+        android:fadeScrollbars="false"
         app:layout_constraintBottom_toTopOf="@+id/save_nota_button"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edit_nota_first_surname"
-        tools:text="Martín" />
+        app:layout_constraintTop_toBottomOf="@+id/horizontalScrollView"
+         />
+
 
     <Button
         android:id="@+id/save_nota_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/save"
+        android:text="@string/guardar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edit_nota_second_surname" />
+        app:layout_constraintTop_toBottomOf="@+id/edit_nota_title"
+        tools:ignore="TextContrastCheck" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

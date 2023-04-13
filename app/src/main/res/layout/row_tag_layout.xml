@@ -5,26 +5,49 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal">
+
     <EditText
         android:id="@+id/tag_name_edittext"
-        android:layout_width="273dp"
-        android:layout_height="43dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:maxLines="1"
+        android:maxLength="28"
+        android:autofillHints="tag name"
+        android:background="@drawable/campo_bonito"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
         android:hint="@string/edit_tag"
         android:inputType="text"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/tag_count"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_chainStyle="spread"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.473"
+        tools:ignore="TouchTargetSizeCheck" />
+
+    <ImageButton
+        android:id="@+id/save_tag_button"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:backgroundTint="@color/secondary_color"
+        android:contentDescription="@string/guardar"
+        android:src="@drawable/baseline_save_24"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/delete_tag_button"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/tag_count"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
-        tools:ignore="TouchTargetSizeCheck"
-        android:autofillHints="tag name" />
+        tools:ignore="ImageContrastCheck" />
 
     <ImageButton
         android:id="@+id/delete_tag_button"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
+        android:layout_width="46dp"
+        android:layout_height="43dp"
+        android:backgroundTint="@color/secondary_color"
         android:contentDescription="@string/delete_tag"
         android:src="@drawable/ic_baseline_delete_24"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -35,28 +58,18 @@
         app:layout_constraintVertical_bias="0.0"
         tools:ignore="VisualLintBounds" />
 
-    <ImageButton
-        android:id="@+id/save_tag_button"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:contentDescription="@string/save"
-        android:src="@drawable/baseline_save_24"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/delete_tag_button"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/tag_count"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
-        tools:ignore="ImageContrastCheck" />
-
     <TextView
         android:id="@+id/tag_count"
-        android:layout_width="41dp"
-        android:layout_height="43dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="2dp"
+        android:background="@drawable/el_hoyo_es_muy_mala_pelicula"
+        android:gravity="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/save_tag_button"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/tag_name_edittext"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

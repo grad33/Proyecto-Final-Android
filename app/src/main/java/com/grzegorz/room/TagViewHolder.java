@@ -5,11 +5,8 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
-
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.grzegorz.room.db.TagWithNotes;
-
 import io.reactivex.rxjava3.annotations.NonNull;
 
 public class TagViewHolder extends RecyclerView.ViewHolder {
@@ -38,7 +35,6 @@ public class TagViewHolder extends RecyclerView.ViewHolder {
         twn=tag;
         _tag.setText(tag.tag.tag);
             Log.d("hola",tag.tag.tag);
-
-        //_count.setText(tag.notes.size());
+        _count.setText(String.valueOf(tag.notes.size()));
     }
 }
