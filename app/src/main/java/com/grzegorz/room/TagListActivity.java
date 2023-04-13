@@ -102,13 +102,13 @@ public class TagListActivity extends AppCompatActivity {
             finish();
             return true;
         }if(item.getItemId() == R.id.menu_add_tag){
-            Tag tag=new Tag();
-            tag.tag="";
             AppDatabase appDatabase = ((RoomApplication) getApplication()).appDatabase;
-            Consumer<Tag> consumer=tag1 -> {
-                tag1.tag="";
-                Completable completable = tag1.tagId > 0 ? appDatabase.TagsDao().updateTag(tag1) : appDatabase.TagsDao().insertTag(tag1);
-                completable.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe();};
+            Tag tag1=new Tag();
+            tag1.tag="";
+                Completable completable =appDatabase.TagsDao().insertTag(tag1);
+                completable.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe();
+
+                return true;
         }
         return super.onOptionsItemSelected(item);
     }

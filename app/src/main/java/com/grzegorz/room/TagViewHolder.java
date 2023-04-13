@@ -39,6 +39,6 @@ public class TagViewHolder extends RecyclerView.ViewHolder {
         _tag.setText(tag.tag.tag);
             Log.d("hola",tag.tag.tag);
 
-        //_count.setText(tag.titulo);
+        //_count.setText(tag.notes.size());
     }
 }

@@ -99,7 +99,7 @@ public class EditNotaActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         int id= item.getItemId();
-        if (item.getItemId() == android.R.id.home) {
+        if (id == android.R.id.home) {
             finish();
             return true;
         }if(id == R.id.menu_add_tag_2){
