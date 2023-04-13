@@ -8,15 +8,19 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.Toast;
+
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.android.material.chip.Chip;
 import com.google.android.material.chip.ChipGroup;
 import com.grzegorz.room.db.AppDatabase;
 import com.grzegorz.room.db.NoteWithTags;
 import com.grzegorz.room.db.Tag;
+
 import java.util.ArrayList;
 import java.util.List;
+
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
 import io.reactivex.rxjava3.annotations.NonNull;
 import io.reactivex.rxjava3.core.Completable;
@@ -31,15 +35,15 @@ public class EditNotaActivity extends AppCompatActivity {
     public static final String NOTA_ID_KEY = "NOTE_ID";
     public static final String TAG_ID_KEY = "TAG_ID";
     private ChipGroup chipGroup;
-    private List<Tag> taglist=new ArrayList<>();
-    private CompositeDisposable disposable=new CompositeDisposable();
+    private List<Tag> taglist = new ArrayList<>();
+    private CompositeDisposable disposable = new CompositeDisposable();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_nota);
         AppDatabase appDatabase = ((RoomApplication) getApplication()).appDatabase;
-        chipGroup=findViewById(R.id.tag_chip_group);
+        chipGroup = findViewById(R.id.tag_chip_group);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle("Añadir/Editar Nota");
         loadTags();
@@ -105,35 +109,38 @@ public class EditNotaActivity extends AppCompatActivity {
             }
         }
     }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.tag_menu, menu);
         return super.onCreateOptionsMenu(menu);
     }
+
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        int id= item.getItemId();
+        int id = item.getItemId();
         if (id == android.R.id.home) {
             onBackPressed();
             return true;
-        }if(id == R.id.menu_add_tag_2){
-            AlertDialog.Builder builder=new AlertDialog.Builder(EditNotaActivity.this);
+        }
+        if (id == R.id.menu_add_tag_2) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(EditNotaActivity.this);
             builder.setTitle("Nuevo tag");
-            EditText et=new EditText(EditNotaActivity.this);
+            EditText et = new EditText(EditNotaActivity.this);
             et.setInputType(InputType.TYPE_CLASS_TEXT);
             builder.setView(et);
             builder.setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialogInterface, int i) {
-                    String s=et.getText().toString();
-                    Tag tag=new Tag();
-                    tag.tag=s;
+                    String s = et.getText().toString();
+                    Tag tag = new Tag();
+                    tag.tag = s;
                     AppDatabase appDatabase = ((RoomApplication) getApplication()).appDatabase;
-                    Consumer<Tag> consumer=tag1 -> {
-                        tag1.tag=s;
+                    Consumer<Tag> consumer = tag1 -> {
+                        tag1.tag = s;
                         Completable completable = tag1.tagId > 0 ? appDatabase.TagsDao().updateTag(tag1) : appDatabase.TagsDao().insertTag(tag1);
-                        completable.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(()->{
-                            Chip chip=new Chip(EditNotaActivity.this);
+                        completable.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(() -> {
+                            Chip chip = new Chip(EditNotaActivity.this);
                             chip.setText(tag1.tag);
 
                             chipGroup.addView(chip);
@@ -172,6 +179,7 @@ public class EditNotaActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
     private void loadTags() {
         AppDatabase appDatabase = ((RoomApplication) getApplication()).appDatabase;
         disposable.add(appDatabase.TagsDao().getAll()

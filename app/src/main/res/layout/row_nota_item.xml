@@ -3,8 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    >
+    android:layout_height="wrap_content">
 
     <ImageButton
         android:id="@+id/button_details"
@@ -27,9 +26,9 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginEnd="8dp"
-        android:maxLines="1"
-        android:maxLength="20"
         android:background="@drawable/campo_bonito"
+        android:maxLength="20"
+        android:maxLines="1"
         android:paddingStart="9dp"
         android:paddingEnd="9dp"
         app:layout_constraintBottom_toBottomOf="@+id/title_main"
@@ -47,9 +46,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="8dp"
-        android:maxLines="1"
-        android:maxLength="20"
         android:background="@drawable/campo_bonito"
+        android:maxLength="20"
+        android:maxLines="1"
         android:paddingStart="9dp"
         android:paddingEnd="9dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -59,7 +58,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints"
-        tools:text="Titulo"/>
+        tools:text="Titulo" />
+
     <ImageButton
         android:id="@+id/button_delete"
         android:layout_width="60dp"

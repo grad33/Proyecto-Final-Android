@@ -4,15 +4,19 @@ import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
 import com.grzegorz.room.db.AppDatabase;
 import com.grzegorz.room.db.Tag;
 import com.grzegorz.room.db.TagWithNotes;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
 import io.reactivex.rxjava3.annotations.NonNull;
 import io.reactivex.rxjava3.core.Completable;
@@ -22,7 +26,7 @@ import io.reactivex.rxjava3.schedulers.Schedulers;
 public class TagListActivity extends AppCompatActivity {
 
     private List<Tag> tags_ = new ArrayList<>();
-    private List<TagWithNotes> twn=new ArrayList<>();
+    private final List<TagWithNotes> twn = new ArrayList<>();
     private TagListAdapter ta;
 
 
@@ -41,12 +45,12 @@ public class TagListActivity extends AppCompatActivity {
                     @SuppressLint("CheckResult")
                     @Override
                     public void accept(List<Tag> tags) {
-                        tags_=tags;
+                        tags_ = tags;
                         RecyclerView recyclerView = findViewById(R.id.tag_list);
                         //recyclerView.setAdapter
-                        ta=new TagListAdapter(twn, new TagListAdapter.TagClickListener(){
+                        ta = new TagListAdapter(twn, new TagListAdapter.TagClickListener() {
                             @Override
-                            public void onTagDelete(int position){
+                            public void onTagDelete(int position) {
 
                                 TagWithNotes tagWithNotes = twn.get(position);
                                 Tag tag = tagWithNotes.tag;
@@ -59,13 +63,14 @@ public class TagListActivity extends AppCompatActivity {
                                             recyclerView.getAdapter().notifyItemRemoved(position);
                                         });
                             }
+
                             @Override
-                            public void onTagEdit(int position){
-                                TagWithNotes tag=twn.get(position);
+                            public void onTagEdit(int position) {
+                                TagWithNotes tag = twn.get(position);
                                 if (tag.tag.tagId > 0) {
                                     appDatabase.TagsDao().updateTag(tag.tag).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe();
 
-                                }else{
+                                } else {
                                     appDatabase.TagsDao().insertTag(tag.tag).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe();
                                 }
                             }
@@ -91,19 +96,21 @@ public class TagListActivity extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.tag_list_menu, menu);
         return true;
     }
+
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
             finish();
             return true;
-        }if(item.getItemId() == R.id.menu_add_tag){
+        }
+        if (item.getItemId() == R.id.menu_add_tag) {
             AppDatabase appDatabase = ((RoomApplication) getApplication()).appDatabase;
-            TagWithNotes _twn=new TagWithNotes();
-            _twn.tag=new Tag();
-            _twn.tag.tag="";
-                Completable completable =appDatabase.TagsDao().insertTag(_twn.tag);
-                completable.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe();
-                twn.add(_twn);
+            TagWithNotes _twn = new TagWithNotes();
+            _twn.tag = new Tag();
+            _twn.tag.tag = "";
+            Completable completable = appDatabase.TagsDao().insertTag(_twn.tag);
+            completable.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe();
+            twn.add(_twn);
             RecyclerView recyclerView = findViewById(R.id.tag_list);
             recyclerView.setLayoutManager(new LinearLayoutManager(TagListActivity.this));
             recyclerView.setAdapter(ta);

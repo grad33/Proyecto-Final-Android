@@ -2,9 +2,5 @@
 <com.google.android.material.chip.Chip xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="100dp"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:theme="@style/Widget.Material3.Chip.Filter"
     android:checkable="true"
-    android:backgroundTint="@color/secondary_color"
-    >
-</com.google.android.material.chip.Chip>
+    android:theme="@style/Widget.Material3.Chip.Filter"></com.google.android.material.chip.Chip>
