@@ -3,14 +3,9 @@ package com.grzegorz.room;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
-import com.grzegorz.room.db.Tag;
 import com.grzegorz.room.db.TagWithNotes;
-
 import java.util.List;
 
 public class TagListAdapter extends RecyclerView.Adapter<TagViewHolder> {

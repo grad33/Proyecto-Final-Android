@@ -1,7 +1,6 @@
 package com.grzegorz.room;
 
 import android.app.Application;
-
 import com.grzegorz.room.db.AppDatabase;
 
 public class RoomApplication extends Application {

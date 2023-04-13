@@ -3,15 +3,10 @@ package com.grzegorz.room;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.grzegorz.room.db.Nota;
-import com.grzegorz.room.R;
-
 import java.util.List;
-
 
 public class NotaAdapter extends RecyclerView.Adapter<NotaViewHolder> {
 
